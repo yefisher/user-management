@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: user-manager-service
+  datasource:
+    url: jdbc:postgresql://localhost:5432/users
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQL10Dialect
+
+eanimal:
+  pwd:
+    secret: "vnfeovwqmdiefmiwedasdasd" #todo: to be changed to env variable

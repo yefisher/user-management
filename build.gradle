@@ -1,0 +1,86 @@
+buildscript {
+    ext {
+        springBootVersion = "3.3.2"
+        springDependencyManagementVersion = "1.1.6"
+        benManesVersion = "0.46.0"
+        spotlessVersion = "6.25.0"
+        githookVersion = "1.2.1"
+    }
+}
+
+plugins {
+    id 'java'
+    id "org.springframework.boot" version "${springBootVersion}"
+    id "io.spring.dependency-management" version "${springDependencyManagementVersion}"
+    //checkstyle
+    id "com.diffplug.spotless" version "${spotlessVersion}"
+    id "com.star-zero.gradle.githook" version "${githookVersion}"
+}
+
+group = 'com.eanimal'
+version = '0.0.1-SNAPSHOT'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(22)
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+githook {
+    failOnMissingHooksDir = false
+    hooks {
+        "pre-push" {
+            task = "spotlessJavaCheck"
+        }
+    }
+}
+
+spotless {
+    java {
+        googleJavaFormat()
+        removeUnusedImports()
+    }
+}
+
+ext {
+    posgresVersion = "42.7.3"
+    hibernateVersion = "6.5.2.Final"
+    mapstructVersion = "1.5.2.Final"
+    testContainersVersion = "1.20.0"
+}
+
+dependencies {
+    implementation files("lombok.config")
+    testImplementation 'org.projectlombok:lombok:1.18.28'
+    compileOnly("org.projectlombok:lombok")
+    annotationProcessor("org.projectlombok:lombok")
+    annotationProcessor("org.mapstruct:mapstruct-processor:${mapstructVersion}")
+
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+    implementation("org.springframework.boot:spring-boot-starter-oauth2-authorization-server")
+    implementation("org.springframework.boot:spring-boot-starter-oauth2-client")
+    implementation("org.springframework.boot:spring-boot-starter-security")
+    implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("org.mapstruct:mapstruct:${mapstructVersion}")
+	implementation("org.apache.commons:commons-lang3")
+
+    runtimeOnly("org.postgresql:postgresql")
+
+    testAnnotationProcessor("org.mapstruct:mapstruct-processor:${mapstructVersion}")
+
+    testImplementation("org.mapstruct:mapstruct:${mapstructVersion}")
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation("org.testcontainers:postgresql:${testContainersVersion}")
+    testImplementation("org.springframework.security:spring-security-test")
+    testImplementation("org.testcontainers:junit-jupiter")
+    testImplementation("org.testcontainers:postgresql")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+}
+
+test {
+    useJUnitPlatform()
+}
