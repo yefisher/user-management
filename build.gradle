@@ -71,6 +71,7 @@ dependencies {
     runtimeOnly("org.postgresql:postgresql")
 
     testAnnotationProcessor("org.mapstruct:mapstruct-processor:${mapstructVersion}")
+    testAnnotationProcessor("org.projectlombok:lombok")
 
     testImplementation("org.mapstruct:mapstruct:${mapstructVersion}")
     testImplementation("org.springframework.boot:spring-boot-starter-test")

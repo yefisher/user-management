@@ -3,13 +3,12 @@ package com.eanimal.usermanagerservice.domain;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import java.time.Instant;
+import java.util.UUID;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import lombok.experimental.SuperBuilder;
-
-import java.time.Instant;
-import java.util.UUID;
 
 @Entity
 @SuperBuilder(toBuilder = true)

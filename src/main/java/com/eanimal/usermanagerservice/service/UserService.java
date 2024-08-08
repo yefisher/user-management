@@ -3,11 +3,10 @@ package com.eanimal.usermanagerservice.service;
 import com.eanimal.usermanagerservice.api.exception.EntityNotFoundException;
 import com.eanimal.usermanagerservice.domain.User;
 import com.eanimal.usermanagerservice.repository.UserRepository;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.UUID;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor

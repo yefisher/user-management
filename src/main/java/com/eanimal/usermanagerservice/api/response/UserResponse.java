@@ -1,12 +1,11 @@
 package com.eanimal.usermanagerservice.api.response;
 
 import com.eanimal.usermanagerservice.domain.UserTelemetry;
+import java.time.Instant;
+import java.util.UUID;
 import lombok.EqualsAndHashCode;
 import lombok.Value;
 import lombok.experimental.SuperBuilder;
-
-import java.time.Instant;
-import java.util.UUID;
 
 @Value
 @SuperBuilder(toBuilder = true)

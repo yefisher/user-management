@@ -9,7 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 @EnableAutoConfiguration(exclude = {DataSourceAutoConfiguration.class})
 class UserManagementApplicationTests {
 
-  private final static PostgresExtension postgres = new PostgresExtension();
+  private static final PostgresExtension postgres = new PostgresExtension();
 
   @Test
   void contextLoads() throws Exception {
